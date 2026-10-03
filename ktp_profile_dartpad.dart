@@ -17,19 +17,19 @@
 //   (Yellow "isn't used" warnings are fine — they go away as you complete challenges.)
 //
 // CHALLENGE Road Map (line numbers are approximate, they shift as you edit)
-//   🟢 1  Make it yours ............ ~line 64
-//   🟢 2  Repaint the app .......... ~line 94
-//   🟢 3  Get verified ............. ~line 103
-//   🟡 4  Dark mode ................ ~line 277
-//   🟡 5  Secret easter egg ........ ~line 320
-//   🟡 6  Follow button ............ ~line 487 (6b: ~line 712)
-//   🟡 7  Special tags ............. ~line 342
-//   🟡 8  Fun facts ................ ~line 361 (part 2: ~line 601)
-//   🔴 9  Spin to win .............. ~line 393
-//   🔴 10 Design your badges ....... ~line 802
-//   🔴 11 Freestyle ................ ~line 675
+//   🟢 1  Make it yours ............ ~line 67
+//   🟢 2  Repaint the app .......... ~line 97
+//   🟢 3  Get verified ............. ~line 106
+//   🟡 4  Dark mode ................ ~line 280
+//   🟡 5  Secret easter egg ........ ~line 323
+//   🟡 6  Special tags ............. ~line 345
+//   🟡 7  Fun facts ................ ~line 364 (part 2: ~line 604)
+//   🔴 8  Spin to win .............. ~line 396
+//   🟡 9  Follow button ............ ~line 490 (9b: ~line 715)
+//   🔴 10 Design your badges ....... ~line 805
+//   🔴 ⭐ Bonus: Freestyle ......... ~line 678
 //   💡 Hints ....................... ~line 1329
-//   🛑 Answers ..................... ~line 1418
+//   🛑 Answers ..................... ~line 1419
 //
 // DIFFICULTY
 //   🟢 = Easy
@@ -41,6 +41,9 @@
 //   Dart Beginner (every 🟢)  ·  Dart Novice (every 🟡)  ·  Dart Pro (every 🔴)
 //   Clear every challenge in a level and its badge lights up.
 //   Hover over a badge to see how many you've done.
+//   Heads up: every Run restarts the app, so badges forget any challenge
+//   you finished by tapping. After your last Run, just repeat what you did
+//   in the app for each challenge to get that progress back.
 //
 
 // DART VARIABLES IN 30 SECONDS:
@@ -113,13 +116,13 @@ const bool isEboard = false;
 const String eboardPosition = 'VP of Membership';
 const bool isPledge = false;
 
-// ⬇  Keep scrolling! CHALLENGE 4 is further down (~line 277), inside the
+// ⬇  Keep scrolling! CHALLENGE 4 is further down (~line 280), inside the
 //     settings icon code of BrotherProfilePage. There's extra info to read on
 //     the way down if you want to:
-//       • What a "class" is (the Brother data model) ...... ~line 125
-//       • Where every Dart program starts: main() ......... ~line 190
-//       • Stateless vs Stateful widgets ................... ~line 195
-//       • What build() does ............................... ~line 227
+//       • What a "class" is (the Brother data model) ...... ~line 128
+//       • Where every Dart program starts: main() ......... ~line 193
+//       • Stateless vs Stateful widgets ................... ~line 198
+//       • What build() does ............................... ~line 230
 
 // ────────────────────────────────────────────────────────────────────────
 // This is the data model for this code, in the real app it
@@ -165,7 +168,7 @@ class Brother {
 
 // Build a Brother object from the variables you edited above, so all of
 // your profile data lives in one place.
-final Brother me = Brother(
+const Brother me = Brother(
   firstName: myFirstName,
   lastName: myLastName,
   pronouns: myPronouns,
@@ -208,7 +211,7 @@ void main() => runApp(const KTPProfileApp());
 // while the app is running.
 // ════════════════════════════════════════════════════════════════════════ 
 
-//  ⬇  Keep scrolling! CHALLENGE 4 is further down (~line 277)
+//  ⬇  Keep scrolling! CHALLENGE 4 is further down (~line 280)
 
 class KTPProfileApp extends StatefulWidget {
   const KTPProfileApp({super.key});
@@ -277,11 +280,11 @@ class BrotherProfilePage extends StatelessWidget {
                 // 🟡 CHALLENGE 4: Dark mode
                 // Right now the ⚙️ settings icon (top right) does nothing.
                 // Swap which line is commented out below, Run, then tap ⚙️.
-                // Follow onSettingsTap back up to _toggleDarkMode (~line 223) — what
+                // Follow onSettingsTap back up to _toggleDarkMode (~line 226) — what
                 // does the ! in !_darkMode do?
                 // ══════════════════════════════════════════════════════
-//                 onTap: () {},
-                onTap: onSettingsTap,
+                onTap: () {},
+                // onTap: onSettingsTap,
               ),
               const SizedBox(width: 20),
             ],
@@ -339,13 +342,13 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
   }
 
   // ══════════════════════════════════════════════════════════════════════
-  // 🟡 CHALLENGE 7: Make your own special tags glow
+  // 🟡 CHALLENGE 6: Make your own special tags glow
   // The real app highlights tags with "director" or "committee lead" in
-  // them and moves them to the front. Look at isLeadershipTag below (~line 350), then
+  // them and moves them to the front. Look at isLeadershipTag below (~line 353), then
   // write isSpecialTag so tags containing "hack" (any capitalization) are
   // special. Special tags turn gold ✨ and move right after leadership tags.
   // Hint: copy the pattern from isLeadershipTag.
-  // Stuck? Hints at ~line 1376, answer at ~line 1470.
+  // Stuck? Hints at ~line 1370, answer at ~line 1465.
   // ══════════════════════════════════════════════════════════════════════
   bool isLeadershipTag(String tag) {
     final lower = tag.toLowerCase();
@@ -358,9 +361,9 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
   }
 
   // ══════════════════════════════════════════════════════════════════════
-  // 🟡 CHALLENGE 8 (part 1 of 2): Fun facts
+  // 🟡 CHALLENGE 7 (part 1 of 2): Fun facts
   // Add a few fun facts about yourself to this list.
-  // Part 2 is further down in build() — search "CHALLENGE 8 (part 2" (~line 601).
+  // Part 2 is further down in build() — search "CHALLENGE 7 (part 2" (~line 604).
   // ══════════════════════════════════════════════════════════════════════
   final List<String> _funFacts = [
     'I once debugged for 3 hours. It was a missing semicolon.',
@@ -380,7 +383,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
   Widget build(BuildContext context) {
     final displayName = _eggOn ? _eggDisplayName : brother.fullName;
 
-    // Checks which challenges you've finished (see the CHALLENGE TRACKER, ~line 833)
+    // Checks which challenges you've finished (see the CHALLENGE TRACKER, ~line 836)
     _checkChallenges(context);
 
     // ── Profile picture ────────────────────────────────────────────────
@@ -390,7 +393,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
     );
 
     // ══════════════════════════════════════════════════════════════════
-    // 🔴 CHALLENGE 9: Spin to win 🌀
+    // 🔴 CHALLENGE 8: Spin to win 🌀
     // Uncomment BOTH lines below. The first wraps the picture in an
     // AnimatedRotation, the second spins it when you press-and-hold.
     // Try changing turns += 1 to 0.25, or the duration to 2 seconds.
@@ -484,10 +487,10 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               ),
 
               // ══════════════════════════════════════════════════════════
-              // 🟡 CHALLENGE 6: Follow button (a NEW feature!)
+              // 🟡 CHALLENGE 9: Follow button (a NEW feature!)
               //   a) Uncomment the line below to show the follow row.
               //   b) Click Follow. The button changes... but the count
-              //      doesn't! Search "CHALLENGE 6b" (~line 712) to fix it.
+              //      doesn't! Search "CHALLENGE 9b" (~line 715) to fix it.
               // ══════════════════════════════════════════════════════════
               // _buildFollowRow(context),
               const SizedBox(height: 16),
@@ -598,7 +601,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               ],
 
               // ══════════════════════════════════════════════════════════
-              // 🟡 CHALLENGE 8 (part 2 of 2): Fun fact card
+              // 🟡 CHALLENGE 7 (part 2 of 2): Fun fact card
               // Uncomment the line below. Click the card for a new
               // random fact. 🔴 Bonus: instead of random, make it go
               // to the NEXT fact in order (hint: % is "remainder").
@@ -672,12 +675,12 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               ],
 
               // ══════════════════════════════════════════════════════════
-              // 🔴 CHALLENGE 11: Freestyle!
+              // 🔴 BONUS CHALLENGE: Freestyle!
               // Add your own section right here. Some ideas:
               //   • "Currently hacking on" card with your MHacks project
-              //     (copy _buildFunFactCard, ~line 742, as a starting point)
+              //     (copy _buildFunFactCard, ~line 745, as a starting point)
               //   • A new collapsible section using _getExpansionTile,
-              //     like Badges and Goals above (~line 611)
+              //     like Badges and Goals above (~line 614)
               //   • A Slider "hype meter" that changes an emoji 😐 → 🔥
               //   • A button that swaps your bio for a random one
               // ══════════════════════════════════════════════════════════
@@ -694,7 +697,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
 
   // ignore: unused_element
   Widget _buildFollowRow(BuildContext context) {
-    // used once you finish Challenge 6
+    // used once you finish Challenge 9
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Row(
@@ -709,7 +712,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               setState(() {
                 _isFollowing = !_isFollowing;
                 // ══════════════════════════════════════════════════════
-                // 🟡 CHALLENGE 6b: Update the follower count
+                // 🟡 CHALLENGE 9b: Update the follower count
                 // Write ONE line here that adds 1 to _followers when you
                 // follow, and subtracts 1 when you unfollow.
                 // Hint: _isFollowing ? ___ : ___
@@ -740,7 +743,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
 
   // ignore: unused_element
   Widget _buildFunFactCard(BuildContext context) {
-    // used once you finish Challenge 8
+    // used once you finish Challenge 7
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
@@ -834,7 +837,7 @@ KTPBadge badgeFromId(int id) {
 // You don't need to edit this. (Reading it is a bit of a spoiler 👀)
 // ════════════════════════════════════════════════════════════════════════
 // The three Dart level badges, and which challenges unlock each one.
-// (Challenge 11 is freestyle, so it's on the honor system 😉)
+// (The bonus freestyle challenge is on the honor system 😉)
 class DartLevel {
   final KTPBadgeData badge;
   final List<int> challenges;
@@ -846,17 +849,14 @@ const List<DartLevel> dartLevels = [
     KTPBadgeData('Dart Beginner', Icons.flutter_dash, Color(0xFF2E8B57)),
     [1, 2, 3],
   ),
-  DartLevel(KTPBadgeData('Dart Novice', Icons.bolt, Color(0xFFC79A00)), [
-    4,
-    5,
-    6,
-    7,
-    8,
-  ]),
-  DartLevel(KTPBadgeData('Dart Pro', Icons.rocket_launch, Color(0xFFC0392B)), [
-    9,
-    10,
-  ]),
+  DartLevel(
+    KTPBadgeData('Dart Novice', Icons.bolt, Color(0xFFC79A00)),
+    [4, 5, 6, 7, 9],
+  ),
+  DartLevel(
+    KTPBadgeData('Dart Pro', Icons.rocket_launch, Color(0xFFC0392B)),
+    [8, 10],
+  ),
 ];
 
 // An "extension" adds methods to a class from outside it.
@@ -870,12 +870,12 @@ extension _ChallengeTracker on _BrotherProfileBodyState {
     if (brother.eboard || brother.pledge) _done.add(3);
     if (Theme.of(context).brightness == Brightness.dark) _done.add(4);
     if (_eggOn) _done.add(5);
-    if (_followers != 41) _done.add(6);
+    if (_followers != 41) _done.add(9);
     if (brother.tags.split(',').any((t) => isSpecialTag(t.trim()))) {
-      _done.add(7);
+      _done.add(6);
     }
-    if (_tappedFunFact) _done.add(8);
-    if (_turns != 0) _done.add(9);
+    if (_tappedFunFact) _done.add(7);
+    if (_turns != 0) _done.add(8);
     if (myBadges.any((id) => id > 5 && badgeInfo.containsKey(id))) {
       _done.add(10);
     }
@@ -1367,29 +1367,29 @@ class KTPTheme {
 //     on, so tapping can never turn it off. That line has to go.
 //   • Reset _pfpTaps back to 0 after flipping, or it'll flip on every tap.
 //
-// CHALLENGE 6 (Follow button)
-//   • 6a: the line to uncomment ends in a comma. Keep it.
-//   • 6b: by the time your line runs, _isFollowing has ALREADY been flipped.
-//     So if it's true now, you just followed (+1).
-//   • x += 1 is short for x = x + 1.
-//
-// CHALLENGE 7 (Special tags)
+// CHALLENGE 6 (Special tags)
 //   • isLeadershipTag lowercases the tag first, so 'Hack', 'HACK' and 'hack'
 //     all match. Do the same.
 //   • .contains('something') returns true or false, which is exactly what
 //     isSpecialTag needs to return.
 //
-// CHALLENGE 8 (Fun facts)
+// CHALLENGE 7 (Fun facts)
 //   • Each fact is a String in quotes, followed by a comma.
 //   • Random can pick the same fact twice in a row. That's not a bug!
 //   • Bonus: % gives the remainder. 3 % 3 is 0, so (index + 1) % length
 //     counts 0, 1, 2, 0, 1, 2... and never goes past the end of the list.
 //
-// CHALLENGE 9 (Spin to win)
+// CHALLENGE 8 (Spin to win)
 //   • Uncomment BOTH lines. It's PRESS AND HOLD, not a click.
 //   • turns: 1 is one full spin, 0.25 is a quarter turn.
 //   • AnimatedScale works just like AnimatedRotation, but takes scale:
 //     instead of turns:. You'll need a new state variable, like _turns.
+//
+// CHALLENGE 9 (Follow button)
+//   • 9a: the line to uncomment ends in a comma. Keep it.
+//   • 9b: by the time your line runs, _isFollowing has ALREADY been flipped.
+//     So if it's true now, you just followed (+1).
+//   • x += 1 is short for x = x + 1.
 //
 // CHALLENGE 10 (Design your badges)
 //   • Each entry in badgeInfo is  number: KTPBadgeData(...),  with a comma.
@@ -1399,11 +1399,12 @@ class KTPTheme {
 //     For 99 there's no badge, so that promise breaks and the app crashes.
 //     ?? means "if the left side is null, use the right side instead".
 //
-// CHALLENGE 11 (Freestyle)
+// CHALLENGE BONUS (Freestyle)
 //   • Your new widget goes inside the children: [ ... ] list, right where
-//     the Challenge 11 comment is, and needs a comma after it.
+//     the Bonus Challenge comment is, and needs a comma after it.
 //   • Need something to change when tapped? Add a state variable next to
 //     _followers, and change it inside setState(() { ... }).
+//
 //
 //
 //
@@ -1461,40 +1462,40 @@ class KTPTheme {
 //     }
 //   }
 //
-// CHALLENGE 6a (in build()):
-//   _buildFollowRow(context),
-//
-// CHALLENGE 6b (in _buildFollowRow, under _isFollowing = !_isFollowing;):
-//   _followers += _isFollowing ? 1 : -1;
-//
-// CHALLENGE 7:
+// CHALLENGE 6:
 //   bool isSpecialTag(String tag) {
 //     return tag.toLowerCase().contains('hack');
 //   }
 //
-// CHALLENGE 8 part 1:
+// CHALLENGE 7 part 1:
 //   final List<String> _funFacts = [
 //     'I once debugged for 3 hours. It was a missing semicolon.',
 //     'I can solve a Rubik\'s cube in under a minute.',
 //     "I've been to 4 hackathons.",
 //   ];
 //
-// CHALLENGE 8 part 2 (in build()):
+// CHALLENGE 7 part 2 (in build()):
 //   _buildFunFactCard(context),
 //
-// CHALLENGE 8 bonus (in _nextFunFact, replacing the Random() line):
+// CHALLENGE 7 bonus (in _nextFunFact, replacing the Random() line):
 //   _funFactIndex = (_funFactIndex + 1) % _funFacts.length;
 //
-// CHALLENGE 9:
+// CHALLENGE 8:
 //   avatar = AnimatedRotation(turns: _turns, duration: const Duration(milliseconds: 800), curve: Curves.easeOutBack, child: avatar);
 //   avatar = GestureDetector(onLongPress: () => setState(() => _turns += 1), child: avatar);
 //
-// CHALLENGE 9 bonus (grow instead of spin):
+// CHALLENGE 8 bonus (grow instead of spin):
 //   1. Next to _turns, add:    double _scale = 1;
 //   2. Replace the two lines with:
 //   avatar = AnimatedScale(scale: _scale, duration: const Duration(milliseconds: 400), child: avatar);
 //   avatar = GestureDetector(onLongPress: () => setState(() => _scale = _scale == 1 ? 1.3 : 1), child: avatar);
 //   (Dart Pro still needs the spin version for the badge to count.)
+//
+// CHALLENGE 9a (in build()):
+//   _buildFollowRow(context),
+//
+// CHALLENGE 9b (in _buildFollowRow, under _isFollowing = !_isFollowing;):
+//   _followers += _isFollowing ? 1 : -1;
 //
 // CHALLENGE 10a (add inside badgeInfo, after badge 5):
 //   6: KTPBadgeData('MHacks 2026', Icons.rocket, Color(0xFF8E44AD)),
@@ -1506,8 +1507,8 @@ class KTPTheme {
 //   final badge = badgeInfo[id] ??
 //       const KTPBadgeData('Unknown badge', Icons.question_mark, Colors.grey);
 //
-// CHALLENGE 11 (one example: a "Currently hacking on" card, placed where
-// the Challenge 11 comment is):
+// CHALLENGE BONUS (one example: a "Currently hacking on" card, placed where
+// the Bonus Challenge comment is):
 //   Container(
 //     padding: const EdgeInsets.all(12),
 //     margin: const EdgeInsets.only(top: 20),
