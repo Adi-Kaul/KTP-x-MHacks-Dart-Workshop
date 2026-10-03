@@ -23,13 +23,13 @@
 //   🟡 4  Dark mode ................ ~line 280
 //   🟡 5  Secret easter egg ........ ~line 323
 //   🟡 6  Special tags ............. ~line 345
-//   🟡 7  Fun facts ................ ~line 364 (part 2: ~line 604)
+//   🟡 7  Fun facts ................ ~line 364 (7b: ~line 606)
 //   🔴 8  Spin to win .............. ~line 396
-//   🟡 9  Follow button ............ ~line 490 (9b: ~line 715)
-//   🔴 10 Design your badges ....... ~line 805
-//   🔴 ⭐ Bonus: Freestyle ......... ~line 678
-//   💡 Hints ....................... ~line 1329
-//   🛑 Answers ..................... ~line 1419
+//   🟡 9  Follow button ............ ~line 490 (9b: ~line 717)
+//   🔴 10 Design your badges ....... ~line 815
+//   🔴 ⭐ Bonus: Freestyle ......... ~line 680
+//   💡 Hints ....................... ~line 1336
+//   🛑 Answers ..................... ~line 1433
 //
 // DIFFICULTY
 //   🟢 = Easy
@@ -47,7 +47,7 @@
 //
 
 // DART VARIABLES IN 30 SECONDS:
-//   String name = 'adi';           // text
+//   String name = 'dart';           // text
 //   int taps = 0;                  // whole number
 //   bool isCool = true;            // true / false
 //   List<String> tags = ['a'];     // a list of things
@@ -80,7 +80,7 @@ const String myPledgeClass = 'Alpha';
 const String myLinkedIn = 'https://linkedin.com/in/your-name';
 const String myBio =
     'First time writing Dart at MHacks! I like building things, drinking '
-    'too much coffee, and pretending I understand CSS.';
+    'matcha, and pretending I understand EECS 203.';
 
 // Profile picture: paste a link to any image. Try 'https://picsum.photos/540'
 // for a random one, or set it to '' to see the empty placeholder circle.
@@ -97,7 +97,7 @@ const String myTags =
 // 🟢 CHALLENGE 2: Repaint the app
 // These are the real KTP blues from lib/theme.dart.
 // Colors are written as 0xAARRGGBB (alpha, red, green, blue in hex).
-// Try: Color(0xFF8E44AD) purple, Color(0xFFE67E22) orange.
+// Try: Color(0xFF8E44AD) purple or Color(0xFFE67E22) orange or search some up
 // ════════════════════════════════════════════════════════════════════════
 const Color ktpBlue = Color(0xFF20529B); // light mode
 const Color ktpBlueDark = Color(0xFF3F86F1); // dark mode
@@ -108,7 +108,7 @@ const Color ktpBlueDark = Color(0xFF3F86F1); // dark mode
 // "Brother" becomes your position, and you gain a "Goals" section at the bottom.
 //
 // Try another position: 'VP of Marketing', 'VP of Finance', 'VP of Engagement'...
-// (Only real positions have goals. Why? Look at eBoardGoals, ~line 887.)
+// (Only real positions have goals. Why? Look at eBoardGoals, ~line 897.)
 //
 // Also try: isPledge = true (with isEboard = false).
 // ════════════════════════════════════════════════════════════════════════
@@ -245,7 +245,7 @@ class _KTPProfileAppState extends State<KTPProfileApp> {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// The Profile Page. From lib/brotherprofile/screens/brother_profile.dart
+// The Profile Page
 // ════════════════════════════════════════════════════════════════════════
 class BrotherProfilePage extends StatelessWidget {
   final Brother brother;
@@ -348,7 +348,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
   // write isSpecialTag so tags containing "hack" (any capitalization) are
   // special. Special tags turn gold ✨ and move right after leadership tags.
   // Hint: copy the pattern from isLeadershipTag.
-  // Stuck? Hints at ~line 1370, answer at ~line 1465.
+  // Stuck? Hints at ~line 1377, answer at ~line 1479.
   // ══════════════════════════════════════════════════════════════════════
   bool isLeadershipTag(String tag) {
     final lower = tag.toLowerCase();
@@ -361,14 +361,14 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
   }
 
   // ══════════════════════════════════════════════════════════════════════
-  // 🟡 CHALLENGE 7 (part 1 of 2): Fun facts
+  // 🟡 CHALLENGE 7a: Fun facts
   // Add a few fun facts about yourself to this list.
-  // Part 2 is further down in build() — search "CHALLENGE 7 (part 2" (~line 604).
+  // 7b and 7c are further down. Search "CHALLENGE 7b" (~line 606).
   // ══════════════════════════════════════════════════════════════════════
   final List<String> _funFacts = [
-    'I once debugged for 3 hours. It was a missing semicolon.',
-    'My first program printed "Hello, World!" and I cried.',
-    'I have strong opinions about tabs vs. spaces.',
+    'I am a big fan of UI / UX',
+    'I can solve 0 leet code hards.',
+    'I have strong opinions about C#.',
   ];
 
   void _nextFunFact() {
@@ -383,7 +383,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
   Widget build(BuildContext context) {
     final displayName = _eggOn ? _eggDisplayName : brother.fullName;
 
-    // Checks which challenges you've finished (see the CHALLENGE TRACKER, ~line 836)
+    // Checks which challenges you've finished (see the CHALLENGE TRACKER, ~line 846)
     _checkChallenges(context);
 
     // ── Profile picture ────────────────────────────────────────────────
@@ -489,8 +489,10 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               // ══════════════════════════════════════════════════════════
               // 🟡 CHALLENGE 9: Follow button (a NEW feature!)
               //   a) Uncomment the line below to show the follow row.
-              //   b) Click Follow. The button changes... but the count
-              //      doesn't! Search "CHALLENGE 9b" (~line 715) to fix it.
+              //   b) Click Follow. The text changes... but the count
+              //      doesn't! Search "CHALLENGE 9b" (~line 717) to fix it.
+              //   c) It doesn't look like a button yet. Search
+              //      "CHALLENGE 9c" (~line 725) to style it.
               // ══════════════════════════════════════════════════════════
               // _buildFollowRow(context),
               const SizedBox(height: 16),
@@ -601,10 +603,10 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               ],
 
               // ══════════════════════════════════════════════════════════
-              // 🟡 CHALLENGE 7 (part 2 of 2): Fun fact card
-              // Uncomment the line below. Click the card for a new
-              // random fact. 🔴 Bonus: instead of random, make it go
-              // to the NEXT fact in order (hint: % is "remainder").
+              // 🟡 CHALLENGE 7b: Fun fact card
+              // Uncomment the line below and Run. A card shows up... but
+              // it's just plain text. Search "CHALLENGE 7c" (~line 760) to
+              // finish building it.
               // ══════════════════════════════════════════════════════════
               // _buildFunFactCard(context),
 
@@ -680,7 +682,7 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
               //   • "Currently hacking on" card with your MHacks project
               //     (copy _buildFunFactCard, ~line 745, as a starting point)
               //   • A new collapsible section using _getExpansionTile,
-              //     like Badges and Goals above (~line 614)
+              //     like Badges and Goals above (~line 616)
               //   • A Slider "hype meter" that changes an emoji 😐 → 🔥
               //   • A button that swaps your bio for a random one
               // ══════════════════════════════════════════════════════════
@@ -715,26 +717,24 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
                 // 🟡 CHALLENGE 9b: Update the follower count
                 // Write ONE line here that adds 1 to _followers when you
                 // follow, and subtracts 1 when you unfollow.
-                // Hint: _isFollowing ? ___ : ___
+                // Hint: _isFollowing ? ___ : ___ (syntax for a mini if else)
                 // ══════════════════════════════════════════════════════
               });
             },
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
-              decoration: BoxDecoration(
-                color: _isFollowing
-                    ? Theme.of(context).cardColor
-                    : Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Text(
-                _isFollowing ? 'Following' : 'Follow',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: _isFollowing ? null : Colors.white,
-                ),
-              ),
-            ),
+            // ════════════════════════════════════════════════════════
+            // 🟡 CHALLENGE 9c: Make it look like a button
+            // Right now "Follow" is plain text. Wrap the Text below in a
+            // Container so it looks like a real button:
+            //   • padding: EdgeInsets.symmetric(vertical: 6, horizontal: 16)
+            //   • decoration: BoxDecoration(...) with rounded corners
+            //     (borderRadius: BorderRadius.circular(30)) and a color:
+            //     Theme.of(context).primaryColor when NOT following,
+            //     Theme.of(context).cardColor when following
+            //   • make the text bold, and white when NOT following
+            // Hint: the fun fact card (_buildFunFactCard) is a Container
+            // with padding and a BoxDecoration too. Use it as a reference.
+            // ════════════════════════════════════════════════════════
+            child: Text(_isFollowing ? 'Following' : 'Follow'),
           ),
         ],
       ),
@@ -756,10 +756,20 @@ class _BrotherProfileBodyState extends State<BrotherProfileBody> {
           ),
           child: Row(
             children: [
-              const Text('💡', style: TextStyle(fontSize: 20)),
-              const SizedBox(width: 10),
-              Expanded(child: Text(_funFacts[_funFactIndex])),
-              const Icon(Icons.refresh_rounded, size: 18),
+              // ══════════════════════════════════════════════════════
+              // 🟡 CHALLENGE 7c: Finish the card
+              // Right now the card only shows the fact. Add widgets to
+              // this list so it looks like:
+              //     💡  I am a big fan of UI / UX                 🔄
+              //   • a Text with the '💡' emoji at the start
+              //     (make it bigger with style: TextStyle(fontSize: 20))
+              //   • a SizedBox(width: 10) to put a gap after the emoji
+              //   • wrap the fact's Text in Expanded(child: ...) so it
+              //     stretches and pushes the next widget to the far right
+              //   • an Icon(Icons.refresh_rounded) at the end
+              // Then Run and tap the card to get a new random fact.
+              // ══════════════════════════════════════════════════════
+              Text(_funFacts[_funFactIndex]),
             ],
           ),
         ),
@@ -1251,10 +1261,7 @@ class GradientText extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════════════════════════════
-// Theme: lib/theme.dart from the real app (the app uses the SF Pro Display
-// font, which DartPad doesn't have, so text looks slightly different).
-// ════════════════════════════════════════════════════════════════════════
+
 class KTPTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: false,
@@ -1374,10 +1381,12 @@ class KTPTheme {
 //     isSpecialTag needs to return.
 //
 // CHALLENGE 7 (Fun facts)
-//   • Each fact is a String in quotes, followed by a comma.
+//   • 7a: each fact is a String in quotes, followed by a comma.
+//   • 7c: widgets in a Row show up left to right in the order you list them.
+//     Every widget in the list needs a comma after it.
+//   • 7c: Expanded(child: Text(...)) takes up all the leftover space, which
+//     is what pushes the 🔄 icon to the right edge.
 //   • Random can pick the same fact twice in a row. That's not a bug!
-//   • Bonus: % gives the remainder. 3 % 3 is 0, so (index + 1) % length
-//     counts 0, 1, 2, 0, 1, 2... and never goes past the end of the list.
 //
 // CHALLENGE 8 (Spin to win)
 //   • Uncomment BOTH lines. It's PRESS AND HOLD, not a click.
@@ -1390,6 +1399,11 @@ class KTPTheme {
 //   • 9b: by the time your line runs, _isFollowing has ALREADY been flipped.
 //     So if it's true now, you just followed (+1).
 //   • x += 1 is short for x = x + 1.
+//   • 9c: put the Text inside the Container:  Container(..., child: Text(...))
+//   • 9c: use the same ? : trick for the color:
+//       color: _isFollowing ? ___ : ___,
+//   • 9c: TextStyle(fontWeight: FontWeight.bold, color: ...). A color of
+//     null means "use the normal text color".
 //
 // CHALLENGE 10 (Design your badges)
 //   • Each entry in badgeInfo is  number: KTPBadgeData(...),  with a comma.
@@ -1467,18 +1481,23 @@ class KTPTheme {
 //     return tag.toLowerCase().contains('hack');
 //   }
 //
-// CHALLENGE 7 part 1:
+// CHALLENGE 7a:
 //   final List<String> _funFacts = [
 //     'I once debugged for 3 hours. It was a missing semicolon.',
 //     'I can solve a Rubik\'s cube in under a minute.',
 //     "I've been to 4 hackathons.",
 //   ];
 //
-// CHALLENGE 7 part 2 (in build()):
+// CHALLENGE 7b (in build()):
 //   _buildFunFactCard(context),
 //
-// CHALLENGE 7 bonus (in _nextFunFact, replacing the Random() line):
-//   _funFactIndex = (_funFactIndex + 1) % _funFacts.length;
+// CHALLENGE 7c (the Row's children in _buildFunFactCard):
+//   children: [
+//     const Text('💡', style: TextStyle(fontSize: 20)),
+//     const SizedBox(width: 10),
+//     Expanded(child: Text(_funFacts[_funFactIndex])),
+//     const Icon(Icons.refresh_rounded, size: 18),
+//   ],
 //
 // CHALLENGE 8:
 //   avatar = AnimatedRotation(turns: _turns, duration: const Duration(milliseconds: 800), curve: Curves.easeOutBack, child: avatar);
@@ -1496,6 +1515,24 @@ class KTPTheme {
 //
 // CHALLENGE 9b (in _buildFollowRow, under _isFollowing = !_isFollowing;):
 //   _followers += _isFollowing ? 1 : -1;
+//
+// CHALLENGE 9c (in _buildFollowRow, replacing child: Text(...)):
+//   child: Container(
+//     padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+//     decoration: BoxDecoration(
+//       color: _isFollowing
+//           ? Theme.of(context).cardColor
+//           : Theme.of(context).primaryColor,
+//       borderRadius: BorderRadius.circular(30),
+//     ),
+//     child: Text(
+//       _isFollowing ? 'Following' : 'Follow',
+//       style: TextStyle(
+//         fontWeight: FontWeight.bold,
+//         color: _isFollowing ? null : Colors.white,
+//       ),
+//     ),
+//   ),
 //
 // CHALLENGE 10a (add inside badgeInfo, after badge 5):
 //   6: KTPBadgeData('MHacks 2026', Icons.rocket, Color(0xFF8E44AD)),
